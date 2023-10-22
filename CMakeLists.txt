@@ -22,6 +22,7 @@ find_package(std_srvs REQUIRED)
 
 ############## YDLIDAR SDK START#####################################
 #find ydlidar_sdk package
+set(ydlidar_sdk_DIR "/home/ehambram/workspaces/libraries/YDLidar-SDK/install/lib/cmake/ydlidar_sdk")
 find_package(ydlidar_sdk REQUIRED)
 ############## YDLIDAR SDK END#####################################
 
@@ -69,6 +70,8 @@ ament_target_dependencies(${PROJECT_NAME}_client
     "std_srvs"
     )
 
+target_link_libraries(${PROJECT_NAME}_client
+    ${YDLIDAR_SDK_LIBRARIES})
 #---------------------------------------------------------------------------------------
 # Install
 #---------------------------------------------------------------------------------------
