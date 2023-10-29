@@ -162,7 +162,7 @@ int main(int argc, char *argv[]) {
     RCLCPP_ERROR(node->get_logger(), "%s\n", laser.DescribeError());
   }
   
-  auto laser_pub = node->create_publisher<sensor_msgs::msg::LaserScan>("scan", rclcpp::SensorDataQoS());
+  auto laser_pub = node->create_publisher<sensor_msgs::msg::LaserScan>("scan", 10);
 
   auto stop_scan_service =
     [&laser](const std::shared_ptr<rmw_request_id_t> request_header,
@@ -194,8 +194,9 @@ int main(int argc, char *argv[]) {
 
       auto scan_msg = std::make_shared<sensor_msgs::msg::LaserScan>();
 
-      scan_msg->header.stamp.sec = RCL_NS_TO_S(scan.stamp);
-      scan_msg->header.stamp.nanosec =  scan.stamp - RCL_S_TO_NS(scan_msg->header.stamp.sec);
+      //scan_msg->header.stamp.sec = RCL_NS_TO_S(scan.stamp);
+      //scan_msg->header.stamp.nanosec =  scan.stamp - RCL_S_TO_NS(scan_msg->header.stamp.sec);
+      scan_msg->header.stamp = node->now();
       scan_msg->header.frame_id = frame_id;
       scan_msg->angle_min = scan.config.min_angle;
       scan_msg->angle_max = scan.config.max_angle;
