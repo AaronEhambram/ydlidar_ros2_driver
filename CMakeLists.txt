@@ -22,7 +22,7 @@ find_package(std_srvs REQUIRED)
 
 ############## YDLIDAR SDK START#####################################
 #find ydlidar_sdk package
-set(ydlidar_sdk_DIR "/home/ehambram/workspaces/libraries/YDLidar-SDK/install/lib/cmake/ydlidar_sdk")
+set(ydlidar_sdk_DIR "/home/aaron/workspace/libraries/YDLidar-SDK/install/lib/cmake/ydlidar_sdk")
 find_package(ydlidar_sdk REQUIRED)
 ############## YDLIDAR SDK END#####################################
 
